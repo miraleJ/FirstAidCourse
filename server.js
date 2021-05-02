@@ -4,11 +4,11 @@ const app = express();
 const path = require('path');
 app.use(cors());
 app.get('/api/getUser', (req,res)=>{
-    const user = 'Evgeni';
+    const user = 'Mirale';
     res.json(user);
 })
 
-const port = 8000;
+const port = 5000;
 
 if (process.env.NODE_ENV === 'production') {
     // Exprees will serve up production assets
