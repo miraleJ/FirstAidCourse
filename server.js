@@ -2,11 +2,12 @@ const express = require('express');
 const cors = require('cors');
 const app = express();
 const path = require('path');
+const mongoose = require('mongoose');
+const usersRouter = require('./server/routers')
+
 app.use(cors());
-app.get('/api/getUser', (req,res)=>{
-    const user = 'Mirale';
-    res.json(user);
-})
+
+app.use('/api/users', usersRouter);
 
 const port = 5000;
 
@@ -20,6 +21,19 @@ if (process.env.NODE_ENV === 'production') {
       res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
     });
   }
+
+  const server =
+  "mongodb+srv://dba:svtxhx@firstaid.oj0dp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+mongoose.connect(server, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  })
+  .then(() => {
+    console.log("database connected");
+  });
+
 app.listen(process.env.PORT || port , () =>{
     console.log(`Server started on port ${port}`)
 });
