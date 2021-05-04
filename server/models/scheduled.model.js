@@ -11,11 +11,6 @@ const sceduledSchema =  mongoose.Schema({
         type: Number,
         require: true,
         unique: false
-    },
-    price: {
-        type: Number,
-        require: true,
-        unique: false
     }
 })
 
