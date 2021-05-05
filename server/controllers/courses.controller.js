@@ -22,27 +22,27 @@ const addCourse = async (req, res) => {
     }
 }
 
-const editCourse = async (req, res) => {
-    console.log(req.body);
-    const { courseName, length, price } = req.body;
+// const editCourse = async (req, res) => {
+//     console.log(req.body);
+//     const { courseName, length, price } = req.body;
 
-    if (false) {//TODO
-        // validations - throw error if wrong
-    }
-    const course = new courseModel({
-        courseName,
-        length,
-        price,
-        isActive : true
-    });
+//     if (false) {//TODO
+//         // validations - throw error if wrong
+//     }
+//     const course = new courseModel({
+//         courseName,
+//         length,
+//         price,
+//         isActive : true
+//     });
 
-    try {
-        await course.save()
-        res.status(201).send(course);
-    } catch (error) {
-        res.status(400).send(error);
-    }
-}
+//     try {
+//         await course.save()
+//         res.status(201).send(course);
+//     } catch (error) {
+//         res.status(400).send(error+"no");
+//     }
+// }
 // const depositing = async (req,res) =>{
 //     if((req.body.amount) > 0){
 //         try{
@@ -313,5 +313,5 @@ const editCourse = async (req, res) => {
 
 module.exports = {
     addCourse,
-    editCourse,
+    // editCourse,
 }

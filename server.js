@@ -26,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
     });
   }
 
-  const server =
+const server =
   "mongodb+srv://dba:svtxhx@firstaid.oj0dp.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 mongoose.connect(server, {
     useNewUrlParser: true,
