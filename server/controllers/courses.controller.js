@@ -2,9 +2,25 @@ const courseModel = require('../models/courses.model');
 var validator = require('validator');
 
 const addCourse = async (req, res) => {
+    console.log(req.body);
     const { courseName, length, price } = req.body;
 
-    if ()
+    if (false) {//TODO
+        // validations - throw error if wrong
+    }
+    const course = new courseModel({
+        courseName,
+        length,
+        price,
+        isActive : true
+    });
+
+    try {
+        await course.save()
+        res.status(201).send(course);
+    } catch (error) {
+        res.status(400).send(error);
+    }
 }
 
 //---------------------------------

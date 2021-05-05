@@ -3,11 +3,15 @@ const cors = require('cors');
 const app = express();
 const path = require('path');
 const mongoose = require('mongoose');
-const usersRouter = require('./server/routers/courses.router')
+const bodyParser = require('body-parser');
+const coursesRouter = require('./server/routers/courses.router')
 
 app.use(cors());
 
-app.use('/api/users', usersRouter);
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+app.use('/api/courses', coursesRouter);
 
 const port = 5000;
 
