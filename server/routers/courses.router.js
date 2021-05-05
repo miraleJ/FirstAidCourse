@@ -3,7 +3,6 @@ const cRouter = express.Router();
 const coursesController = require('../controllers/courses.controller')
 
 cRouter.post('/', (req, res) => {
-    console.log(req.body);
     coursesController.addCourse(req, res);
 }).put('/', (req, res) => {
     coursesController.editCourse(req,res);

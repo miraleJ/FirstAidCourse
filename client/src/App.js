@@ -1,17 +1,18 @@
 import React from 'react'
 import './App.css';
-import { Route } from 'react-router';
-import User from './components/user.component';
-import { BrowserRouter } from 'react-router-dom';
+import AddCourse from './components/AddCourse.component';
+// import { Route } from 'react-router';
+// import User from './components/user.component';
+// import { BrowserRouter } from 'react-router-dom';
 
 function App() {
 
   return (
     <div>
-      <BrowserRouter>
+      <AddCourse />
+      {/* <BrowserRouter>
         <Route exact path='/' component={User} />
-      </BrowserRouter>
-
+      </BrowserRouter> */}
     </div>
   );
 }

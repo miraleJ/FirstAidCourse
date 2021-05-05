@@ -2,7 +2,6 @@ const courseModel = require('../models/courses.model');
 var validator = require('validator');
 
 const addCourse = async (req, res) => {
-    console.log(req.body);
     const { courseName, length, price } = req.body;
 
     if (false) {//TODO
@@ -23,6 +22,52 @@ const addCourse = async (req, res) => {
     }
 }
 
+const editCourse = async (req, res) => {
+    console.log(req.body);
+    const { courseName, length, price } = req.body;
+
+    if (false) {//TODO
+        // validations - throw error if wrong
+    }
+    const course = new courseModel({
+        courseName,
+        length,
+        price,
+        isActive : true
+    });
+
+    try {
+        await course.save()
+        res.status(201).send(course);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+}
+// const depositing = async (req,res) =>{
+//     if((req.body.amount) > 0){
+//         try{
+//             const id= req.params.id;
+//             const user = await userModel.findOneAndUpdate({"passportId":id},{$inc: { "accountDetails.cash": req.body.amount }},{new:true, runValidators:true});
+//             if(!user){
+//                 return res.status(400).send('User not found');
+//             }
+//             else{
+//             const transaction = new transactionsModel({
+//                 passportId:id,
+//                 transactionType:"Depositing",
+//                 amount:req.body.amount,
+//             });
+//             const result = await transaction.save();
+//             res.status(200).json({ user: user, transaction: result });
+//         }
+//         }catch(e){
+//             res.status(400).send(e);
+//         }
+//     }  
+//     else{
+//         return res.status(400).send('Bad request, Negative amount is not allowed');
+//     }
+// }
 //---------------------------------
 // cRouter.post('/', (req, res) => {
 //     coursesController.addCourse(req, res);
@@ -268,10 +313,5 @@ const addCourse = async (req, res) => {
 
 module.exports = {
     addCourse,
-    // deposit,
-    // creditUpdate, 
-    // withdraw,
-    // transfer,
-    // detailsOfUser,
-    // getAllClients
+    editCourse,
 }
