@@ -9,7 +9,8 @@ cRouter.post('/', (req, res) => {
 }).get('/:name', (req, res) => {
     coursesController.getCourseByName(req, res);
 })
-// .put('/', (req, res) => {
+//TODO - get course by part of the name
+// .put('/', (req, res) => { //TODO
 //     coursesController.editCourse(req,res);
 // })
 

@@ -36,6 +36,21 @@ const getAllCourses = async (req, res) => {
     }
 }
 
+const getCourseByName = async (req, res) => {
+    const cName = req.params.name;
+    console.log(cName);
+    try {
+        const course = await courseModel.find({courseName: cName});
+        if (course.length === 0){
+            //TODO - return status
+            return res.status(200).send('There are no courses matching this name.');
+        }
+        res.status(201).send(course);
+    } catch(e) {
+        res.status(500).send(e+" nooooooooo!");
+    }
+}
+
 // const editCourse = async (req, res) => {
 //     const { courseName, length, price } = req.body;
 
@@ -328,5 +343,6 @@ const getAllCourses = async (req, res) => {
 module.exports = {
     addCourse,
     getAllCourses,
+    getCourseByName,
     // editCourse,
 }
