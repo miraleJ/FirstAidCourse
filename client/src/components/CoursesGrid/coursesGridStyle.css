@@ -1,0 +1,5 @@
+.courses-grid {
+  display: grid;
+  background-color: #699995;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}

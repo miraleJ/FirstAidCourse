@@ -9,7 +9,7 @@ export default function CourseCard(props) {
                 {props.title}
             </h3>
             <h4>
-                {props.info1}
+                {props.info}
             </h4>
         </div>
     )
