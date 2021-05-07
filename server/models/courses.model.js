@@ -18,6 +18,12 @@ const courseSchema =  mongoose.Schema({
         require: true,
         unique: false
     },
+    description: {
+        type: String,
+        require: false,
+        unique: false,
+        // maxLength: 
+    },
     isActive: {
         type: Boolean,
         require: true,

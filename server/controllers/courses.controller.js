@@ -2,7 +2,7 @@ const courseModel = require('../models/courses.model');
 var validator = require('validator');
 
 const addCourse = async (req, res) => {
-    const { courseName, length, price } = req.body;
+    const { courseName, length, price, description } = req.body;
 
     if (false) {//TODO
         // validations - throw error if wrong
@@ -11,6 +11,7 @@ const addCourse = async (req, res) => {
         courseName,
         length,
         price,
+        description,
         isActive : true
     });
 
@@ -22,8 +23,20 @@ const addCourse = async (req, res) => {
     }
 }
 
+const getAllCourses = async (req, res) => {
+    try {
+        const courses = await courseModel.find();
+        if (courses.length === 0){
+            //TODO - return status
+            return res.status(200).send('There are no courses yet.');
+        }
+        res.status(201).send(courses);
+    } catch(e) {
+        res.status(500).send(e+" nooooooooo!");
+    }
+}
+
 // const editCourse = async (req, res) => {
-//     console.log(req.body);
 //     const { courseName, length, price } = req.body;
 
 //     if (false) {//TODO
@@ -35,6 +48,7 @@ const addCourse = async (req, res) => {
 //         price,
 //         isActive : true
 //     });
+// }
 
 //     try {
 //         await course.save()
@@ -313,5 +327,6 @@ const addCourse = async (req, res) => {
 
 module.exports = {
     addCourse,
+    getAllCourses,
     // editCourse,
 }
