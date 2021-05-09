@@ -22,14 +22,21 @@ const courseSchema =  mongoose.Schema({
         type: String,
         require: false,
         unique: false,
+        trim: true,
         // maxLength: 
     },
-    isActive: {
+    isPublished: {
         type: Boolean,
         require: true,
         unique: false,
         default: true
-    }
+    },
+})
+
+courseSchema.virtual('sceduled', {
+    ref: 'SceduledCourse',
+    localField: '_id',
+    foreignField: 'course'
 })
 
 const courseModel = mongoose.model("Course", courseSchema);

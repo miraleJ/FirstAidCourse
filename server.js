@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const coursesRouter = require('./server/routers/courses.router')
 const usersRouter = require('./server/routers/users.router')
+const usersRouter = require('./server/routers/sceduled.router')
 
 app.use(cors());
 
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 
 app.use('/api/courses', coursesRouter);
 app.use('/api/users', usersRouter);
+app.use('/api/sceduled', sceduledRouter);
 
 const port = 5000;
 

@@ -41,6 +41,7 @@ const getUserByMail = async (req, res) => {
     //     res.status(500).send("The mail is not valid");
     // }
     try {
+        // tODO to lowercase
         const user = await userModel.find({email: email});
         if (user.length === 0){
             //TODO - return status

@@ -2,7 +2,7 @@ const courseModel = require('../models/courses.model');
 var validator = require('validator');
 
 const addCourse = async (req, res) => {
-    const { courseName, length, price, description } = req.body;
+    const { courseName, length, price, description, isPublished } = req.body;
 
     if (false) {//TODO
         // validations - throw error if wrong
@@ -12,7 +12,7 @@ const addCourse = async (req, res) => {
         length,
         price,
         description,
-        isActive : true
+        isPublished
     });
 
     try {
@@ -61,7 +61,7 @@ const getCourseByName = async (req, res) => {
 //         courseName,
 //         length,
 //         price,
-//         isActive : true
+//         isPublished : true
 //     });
 // }
 
