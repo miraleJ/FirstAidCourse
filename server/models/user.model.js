@@ -37,6 +37,21 @@ const userSchema =  mongoose.Schema({
         require: false,
         unique: false,
         trim: true,
+    },
+    coursesTaken: {
+        type: [{
+            sceduledCourse: {
+                type: mongoose.Schema.Types.ObjectId,
+                require: true,
+                unique: false,
+                ref: 'SceduledCourse'
+            },
+            didPass: {
+                type: Boolean,
+                require: true,
+                unique: false          
+            }
+        }]
     }
 })
 

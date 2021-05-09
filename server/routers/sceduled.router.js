@@ -1,17 +1,19 @@
 const express = require('express');
-const cRouter = express.Router();
-const coursesController = require('../controllers/courses.controller')
+const sRouter = express.Router();
+const sceduledController = require('../controllers/sceduled.controller')
 
-cRouter.post('/', (req, res) => {
-    coursesController.addCourse(req, res);
+sRouter.post('/', (req, res) => {
+    sceduledController.addSceduled(req, res);
 }).get('/', (req, res) => {
-    coursesController.getAllCourses(req, res);
-}).get('/:name', (req, res) => {
-    coursesController.getCourseByName(req, res);
+    sceduledController.getAllSceduled(req, res);
+}).get('/:courseName', (req, res) => {
+    sceduledController.getSceduledByCourseName(req, res);
+}).get('/:date', (req, res) => {
+    sceduledController.getSceduledByDate(req, res);
 })
 //TODO - get course by part of the name
-// .put('/', (req, res) => { //TODO
-//     coursesController.editCourse(req,res);
+// .put('/', (req, res) => { /TODO
+//     sceduledController.editSceduled(req,res);
 // })
 
-module.exports = cRouter;
+module.exports = sRouter;

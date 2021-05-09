@@ -11,7 +11,8 @@ const addUser = async (req, res) => {
         email,
         name,
         password,
-        userType
+        userType,
+        // TODO - the array of courses and if passed
     });
 
     try {

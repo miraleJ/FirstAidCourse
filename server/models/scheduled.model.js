@@ -2,16 +2,16 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 const sceduledSchema =  mongoose.Schema({
-    courseName: { //TODO - need to be from the courses scema
+    courseName: { //TODO - need to be from the courses schema
         type: String,
         require: true,
-        unique: true,
+        unique: false,
         trim: true
     },
     course: {
         // TODO - how to do it can have
         type: mongoose.Schema.Types.ObjectId,
-        require: false,
+        require: true,
         unique: false,
         ref: 'Course'
     },
@@ -52,7 +52,7 @@ const sceduledSchema =  mongoose.Schema({
                 //TODO
             }
         },
-        require: false,
+        require: true,
         unique: true,
         trim: true
     },
@@ -62,6 +62,12 @@ const sceduledSchema =  mongoose.Schema({
         unique: false,
         trim: true
     }
+})
+
+sceduledSchema.virtual('students', {
+    ref: 'User',
+    localField: '_id',
+    foreignField: 'sceduledCourse'
 })
 
 const sceduledModel = mongoose.model("SceduledCourse", sceduledSchema);
