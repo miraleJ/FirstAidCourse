@@ -12,7 +12,7 @@ const addUser = async (req, res) => {
         name,
         password,
         userType,
-        // TODO - the array of courses and if passed
+        // TODO courseTaken - the array of courses and if passed
     });
 
     try {

@@ -8,13 +8,13 @@ const sceduledSchema =  mongoose.Schema({
         unique: false,
         trim: true
     },
-    course: {
-        // TODO - how to do it can have
-        type: mongoose.Schema.Types.ObjectId,
-        require: true,
-        unique: false,
-        ref: 'Course'
-    },
+    // course: {
+    //     // TODO - how to do it can have
+    //     // type: mongoose.Schema.Types.ObjectId,
+    //     require: true,
+    //     unique: false,
+    //     ref: 'Course'
+    // },
     place: {
         type: {
             address: {

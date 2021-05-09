@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const coursesRouter = require('./server/routers/courses.router')
 const usersRouter = require('./server/routers/users.router')
-const usersRouter = require('./server/routers/sceduled.router')
+const sceduledRouter = require('./server/routers/sceduled.router')
 
 app.use(cors());
 

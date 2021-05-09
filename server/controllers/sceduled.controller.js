@@ -1,5 +1,5 @@
 // TODO - not forget the course name and id
-const SceduledModel = require('../models/Sceduled.model');
+const SceduledModel = require('../models/scheduled.model');
 var validator = require('validator');
 
 const addSceduled = async (req, res) => {
@@ -11,7 +11,7 @@ const addSceduled = async (req, res) => {
     }
     const Sceduled = new SceduledModel({
         SceduledName, //TODO???
-        course: req.course._id, //TODO - do course is the right word???
+        // course: req.course._id, //TODO - do course is the right word???
         place,
         timeOfCourse,
         moreDetails
