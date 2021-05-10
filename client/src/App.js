@@ -3,6 +3,7 @@ import './App.css';
 import AddCourse from './components/AddCourse.component';
 import CourseCard from './components/CourseCard/CourseCard.component';
 import CoursesGrid from './components/CoursesGrid/CoursesGrid.component';
+import NavBar from './components/NavBar/NavBar.component';
 // import { Route } from 'react-router';
 // import User from './components/user.component';
 // import { BrowserRouter } from 'react-router-dom';
@@ -11,6 +12,20 @@ function App() {
 
   return (
     <div>
+      <NavBar 
+        link1='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
+        txt1='11'
+        link2='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
+        txt2='22'
+        link3='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
+        txt3='33'
+        link4='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
+        txt4='44'
+        link5='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
+        txt5='55'
+        link6='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
+        txt6='66'
+      />
       <AddCourse />
       {/* <BrowserRouter>
         <Route exact path='/' component={User} />

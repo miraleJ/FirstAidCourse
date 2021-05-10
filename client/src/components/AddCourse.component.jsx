@@ -19,21 +19,29 @@ export default function AddCourse() {
     }
 
     const buttonHandler = async () => {
-        await axios.post('https://first-aid-courses.herokuapp.com/api/courses/',{
+        try {
+            await axios.post('https://first-aid-courses.herokuapp.com/api/courses/',{
             "courseName" : courseName,
             "length" : courseLength,
             "price" : coursePrice
-        });
+            });
+            //TODO understand why it is not deleted after submit
+            setCourseName('');
+            setCourseLength('');
+            setCoursePrice ('');
+        } catch (error) {
+            console.log("post error"+error);
+        }
     }    
 
     return (
         <div className="add-course-section">
             <label htmlFor="Course name" className="input-lable" >New course name: </label>
-            <input type="text" className="input-area" id="new-course-name" onChange={nameHandler}/>
+            <input type="text" className="input-area" id="new-course-name" onChange={nameHandler} placeholder={courseName}/>
             <label htmlFor="Course length" className="input-lable">New course length: </label>
-            <input type="text" className="input-area" id="new-course-length" onChange={lengthHandler}/>
+            <input type="text" className="input-area" id="new-course-length" onChange={lengthHandler} placeholder={courseLength}/>
             <label htmlFor="Course price" className="input-lable">New course price: </label>
-            <input type="text" className="input-area" id="new-course-price" onChange={priceHandler}/>
+            <input type="text" className="input-area" id="new-course-price" onChange={priceHandler} placeholder={coursePrice}/>
             <button onClick={buttonHandler}>Add New Course</button>
         </div>
     )
