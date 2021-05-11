@@ -1,0 +1,14 @@
+.footer {
+  font-size: 2vh;
+  color: #fff;
+  background-color: rgba(67, 190, 205, 0.95);
+  text-align: center;
+  padding: 1vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  font-size: 4vh;
+}
