@@ -14,17 +14,17 @@ function App() {
     <div>
       <NavBar 
         link1='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
-        txt1='11'
+        txt1='HOME'
         link2='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
-        txt2='22'
+        txt2='FIRST AID COURSES'
         link3='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
-        txt3='33'
+        txt3='EXERCISES'
         link4='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
-        txt4='44'
+        txt4='BLOG'
         link5='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
-        txt5='55'
+        txt5='ABOUT'
         link6='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
-        txt6='66'
+        txt6='CONTACT US'
       />
       <AddCourse />
       {/* <BrowserRouter>
