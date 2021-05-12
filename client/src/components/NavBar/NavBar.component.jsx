@@ -15,7 +15,6 @@ export default function NavBar(props) {
                 <a href={props.link3}>{props.txt3}</a>
             </div>
             <div className='nav-bar-link logo'>
-                {/* <img src="./NavBar/first-aid-with-amir-logo.png" alt="two hearts"/> */}
             </div>
             <div className='nav-bar-link'>
                 <a href={props.link4}>{props.txt4}</a>
