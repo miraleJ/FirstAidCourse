@@ -1,0 +1,7 @@
+.secondary-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4vw;
+  justify-content: space-around;
+  padding: 3vw;
+}

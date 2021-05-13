@@ -1,5 +1,6 @@
 .main-section {
   background: url("Picture3.png") no-repeat center top;
+  background-size: 100vw;
   height: 75vh;
   width: 100%;
   position: relative;
