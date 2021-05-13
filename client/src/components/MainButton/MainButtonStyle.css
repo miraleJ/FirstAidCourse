@@ -1,0 +1,23 @@
+.main-button-link {
+  display: inline-block;
+  width: 320px;
+}
+
+.main-button {
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  background-color: #bb0316;
+  border-radius: 50%;
+  height: 320px;
+  width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 3vh;
+  font-size: 60px;
+  font-weight: 900;
+  /* font-family: 'Spartan', sans-serif; */
+}

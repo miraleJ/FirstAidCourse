@@ -1,4 +1,6 @@
 .footer {
+  /* position: sticky;
+  bottom: 0; */
   font-size: 2vh;
   color: #fff;
   background-color: rgba(67, 190, 205, 0.95);

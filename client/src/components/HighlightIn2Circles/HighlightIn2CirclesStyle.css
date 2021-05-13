@@ -1,0 +1,47 @@
+.highlight-in-2-circles {
+  position: relative;
+  /* right: 2%; */
+  display: inline-block;
+  height: 350px;
+  width: 350px;
+}
+
+.back-circle {
+  position: relative;
+  background-color: blueviolet;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60%;
+  width: 60%;
+}
+
+.front-circle {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  padding: 2vh;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  background-color: #fff;
+  border-radius: 50%;
+  top: 30%;
+  left: 30%;
+  height: 70%;
+  width: 70%;
+  color: #3e4b4a;
+}
+
+.highlight-title {
+  font-size: 6vh;
+  font-weight: 800;
+  margin: 0;
+}
+
+.highlight-txt {
+  font-size: 3vh;
+  padding: 3vh;
+  margin: 0;
+}
