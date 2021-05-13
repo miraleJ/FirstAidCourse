@@ -7,7 +7,7 @@
   position: absolute;
   top: 15%;
   left: 20%;
-  background-color: #bb0316;
+  background-color: #bb0315b2;
   border-radius: 50%;
   height: 320px;
   width: 320px;
@@ -17,7 +17,7 @@
   text-align: center;
   color: white;
   padding: 3vh;
-  font-size: 60px;
-  font-weight: 900;
+  font-size: 55px;
+  font-weight: 700;
   /* font-family: 'Spartan', sans-serif; */
 }
