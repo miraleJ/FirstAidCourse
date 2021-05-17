@@ -13,6 +13,10 @@ export default function HighlightCircleWithText(props) {
             ></div>
             <h4 className="highlight-title">{props.title}</h4>
             <p className="highlight-text">{props.text}</p>
+            <br/>
+            {console.log(props.btnLink)}
+            READ MORE
+            <a href="google.com">READ MORE</a>
         </div>
     )
 }
