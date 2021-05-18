@@ -3,8 +3,7 @@ import './HighlightCircleWithTextStyle.css'
 
 export default function HighlightCircleWithText(props) {
     return (
-        <div>
-            {console.log("")}
+        <div className="highlight-circle-with-text">
             <div className="highlight-circle"
                 style={{
                     background: `url(${props.pic}) no-repeat center`,
@@ -15,8 +14,7 @@ export default function HighlightCircleWithText(props) {
             <p className="highlight-text">{props.text}</p>
             <br/>
             {console.log(props.btnLink)}
-            READ MORE
-            <a href="google.com">READ MORE</a>
+            <a className="read-more" href="google.com">READ MORE</a>
         </div>
     )
 }
