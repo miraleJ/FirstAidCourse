@@ -5,6 +5,7 @@ import './CoursesPageStyle.css'
 export default function CoursesPage() {
     return (
         <div className='courses-page page'>
+            all courses
             
         </div>
     )
