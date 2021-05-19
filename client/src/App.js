@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './App.css';
 import AddCourse from './components/AddCourse.component';
 import CourseCard from './components/CourseCard/CourseCard.component';
@@ -13,6 +13,7 @@ import HomePage from './pages/HomePage/HomePage.page';
 // import { BrowserRouter } from 'react-router-dom';
 
 function App() {
+  const [loginToggle, setLogginToggle] = useState(false);
 
   return (
     <div>
@@ -27,8 +28,7 @@ function App() {
         txt4='BLOG'
         link5='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
         txt5='ABOUT'
-        link6='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
-        txt6='CONTACT US'
+        loginT={loginToggle}
       />
       <HomePage />
 {/* <div style={{display:'flex;'}} >
