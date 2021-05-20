@@ -13,6 +13,7 @@ import NavBar from './components/NavBar/NavBar.component';
 import HomePage from './pages/HomePage/HomePage.page';
 import CoursesPage from './pages/CoursesPage/CoursesPage.page';
 import BlogPage from './pages/BlogPage/BlogPage.page';
+import ExercisesPage from './pages/ExcercisesPage/Exersises.page';
 
 function App() {
   const [loginToggle, setLogginToggle] = useState(false);
@@ -62,6 +63,7 @@ function App() {
                 <CoursesPage courses={allCourses} />
             }</Route>
             <Route exact path='/blog' component={BlogPage} />
+            <Route exact path='/exercises' component={ExercisesPage} />
           </Switch>
         <Footer />
       </BrowserRouter>
