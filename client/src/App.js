@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './App.css';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route } from 'react-router-dom';
+import { Switch } from 'react-router';
+import axios from 'axios';
 import AddCourse from './components/AddCourse.component';
 import CourseCard from './components/CourseCard/CourseCard.component';
 import CoursesGrid from './components/CoursesGrid/CoursesGrid.component';
@@ -13,26 +15,53 @@ import CoursesPage from './pages/CoursesPage/CoursesPage.page';
 
 function App() {
   const [loginToggle, setLogginToggle] = useState(false);
+  const [allCourses, setAllCourses] = useState([]);
+  const [spinner, setSpinner] = React.useState(true);
+
+
+  const getCoursesFromAPI = async () => {
+    try {
+      const c = await axios.get(`https://first-aid-courses.herokuapp.com/api/courses/`)
+      if (c) {
+        console.log(c);
+        setSpinner(false);
+        setAllCourses( c.data); 
+        console.log(allCourses);
+      }
+    } catch(e) {
+      console.log(e);
+    }
+  }
+
+  useEffect(() => {
+     getCoursesFromAPI();
+  }, []);
 
   return (
     <div>
       <BrowserRouter>
         <NavBar 
-          link1='https://first-aid-courses.herokuapp.com/'
+          link1='/'
           txt1='HOME'
-          link2='https://first-aid-courses.herokuapp.com/courses'
+          link2='/courses'
           txt2='FIRST AID COURSES'
-          link3='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
+          link3='/exercises'
           txt3='EXERCISES'
-          link4='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
+          link4='blog'
           txt4='BLOG'
-          link5='http://3.bp.blogspot.com/-JheFL-2nc7I/U8l1uy8nyhI/AAAAAAAAKh8/QgPFym4S3yM/s1600/doctor-emoticon-for-facebook.png'
+          link5='about'
           txt5='ABOUT'
           loginT={loginToggle}
         />
           <Switch>
             <Route exact path='/' component={HomePage} />
-            <Route exact path='/courses' component={CoursesPage} />
+            <Route exact path='/courses'>{
+              spinner ?
+                <div className="loader">Loading...</div> :
+                <CoursesPage courses={allCourses} />
+            }</Route>
+            {/* { allCourses ? (<Route exact path='/courses' component={() => <CoursesPage courses={allCourses} />} />) : "not yet"} */}
+            
             {/* <Route path="*" component={Page404} /> */}
           </Switch>
         <Footer />
