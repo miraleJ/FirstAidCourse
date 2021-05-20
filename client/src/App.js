@@ -12,6 +12,7 @@ import MainButton from './components/MainButton/MainButton.component';
 import NavBar from './components/NavBar/NavBar.component';
 import HomePage from './pages/HomePage/HomePage.page';
 import CoursesPage from './pages/CoursesPage/CoursesPage.page';
+import BlogPage from './pages/BlogPage/BlogPage.page';
 
 function App() {
   const [loginToggle, setLogginToggle] = useState(false);
@@ -60,9 +61,7 @@ function App() {
                 <div className="loader">Loading...</div> :
                 <CoursesPage courses={allCourses} />
             }</Route>
-            {/* { allCourses ? (<Route exact path='/courses' component={() => <CoursesPage courses={allCourses} />} />) : "not yet"} */}
-            
-            {/* <Route path="*" component={Page404} /> */}
+            <Route exact path='/blog' component={BlogPage} />
           </Switch>
         <Footer />
       </BrowserRouter>
