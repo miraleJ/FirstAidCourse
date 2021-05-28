@@ -4,6 +4,8 @@ var validator = require('validator');
 const addUser = async (req, res) => {
     const { email, name, password, userType } = req.body;
 
+    await userModel.syncIndexes();
+
     if (false) {//TODO
         // validations - throw error if wrong
     }
@@ -28,11 +30,11 @@ const getAllUsers = async (req, res) => {
         const users = await userModel.find();
         if (users.length === 0){
             //TODO - return status
-            return res.status(200).send('There are no users yet.');
+            return res.status(204).send('There are no users yet.');
         }
-        res.status(201).send(users);
+        res.status(200).send(users);
     } catch(e) {
-        res.status(500).send(e+" nooooooooo!");
+        res.status(404).send(e+" nooooooooo!");
     }
 }
 
@@ -46,11 +48,11 @@ const getUserByMail = async (req, res) => {
         const user = await userModel.find({email: email});
         if (user.length === 0){
             //TODO - return status
-            return res.status(200).send('There are no users matching this mail.');
+            return res.status(204).send('There are no users matching this mail.');
         }
-        res.status(201).send(user);
+        res.status(200).send(user);
     } catch(e) {
-        res.status(500).send(e+" nooooooooo!");
+        res.status(404).send(e+" nooooooooo!");
     }
 }
 

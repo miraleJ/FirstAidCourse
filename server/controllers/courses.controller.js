@@ -28,11 +28,11 @@ const getAllCourses = async (req, res) => {
         const courses = await courseModel.find();
         if (courses.length === 0){
             //TODO - return status
-            return res.status(200).send('There are no courses yet.');
+            return res.status(204).send('There are no courses yet.');
         }
-        res.status(201).send(courses);
+        res.status(200).send(courses);
     } catch(e) {
-        res.status(500).send(e+" nooooooooo!");
+        res.status(404).send(e+" nooooooooo!");
     }
 }
 
@@ -43,11 +43,11 @@ const getCourseByName = async (req, res) => {
         const course = await courseModel.find({courseName: cName});
         if (course.length === 0){
             //TODO - return status
-            return res.status(200).send('There are no courses matching this name.');
+            return res.status(204).send('There are no courses matching this name.');
         }
-        res.status(201).send(course);
+        res.status(200).send(course);
     } catch(e) {
-        res.status(500).send(e+" nooooooooo!");
+        res.status(404).send(e+" nooooooooo!");
     }
 }
 
