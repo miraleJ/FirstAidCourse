@@ -8,6 +8,8 @@ uRouter.post('/', (req, res) => {
     usersController.getAllUsers(req, res);
 }).get('/email', (req, res) => {
     usersController.getUserByMail(req, res);
+}).get('/:name', (req, res) => {
+    usersController.getUserByName(req, res);
 })
 //TODO - get User by part of the name
 // .put('/', (req, res) => { //TODO

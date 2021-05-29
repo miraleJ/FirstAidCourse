@@ -41,8 +41,8 @@ const userSchema =  mongoose.Schema({
     coursesTaken: {
         type: [{
             sceduledCourse: {
-                type: String,
-                // type: mongoose.Schema.Types.ObjectId,
+                // type: String,
+                type: mongoose.Schema.Types.ObjectId,
                 require: false,
                 unique: false,
                 // ref: 'SceduledCourse'

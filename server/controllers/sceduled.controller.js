@@ -3,17 +3,17 @@ const SceduledModel = require('../models/scheduled.model');
 var validator = require('validator');
 
 const addSceduled = async (req, res) => {
-    const { sceduledName, place } = req.body; //TODO???
+    const { courseName, place, timeOfCourse, isOnline, moreDetails } = req.body;
 
     if (false) {//TODO
         // validations - throw error if wrong
         // check the name exist in the course collection
     }
     const Sceduled = new SceduledModel({
-        SceduledName, //TODO???
-        // course: req.course._id, //TODO - do course is the right word???
+        courseName,
         place,
         timeOfCourse,
+        isOnline,
         moreDetails
     });
 
@@ -29,25 +29,51 @@ const getAllSceduleds = async (req, res) => {
     try {
         const Sceduleds = await SceduledModel.find();
         if (Sceduleds.length === 0){
-            //TODO - return status
-            return res.status(200).send('There are no Sceduleds yet.');
+            return res.status(204).send('There are no Sceduleds yet.');
         }
-        res.status(201).send(Sceduleds);
+        res.status(200).send(Sceduleds);
     } catch(e) {
         res.status(500).send(e+" nooooooooo!");
     }
 }
 
-const getSceduledByName = async (req, res) => {
-    const cName = req.params.name;
-    console.log(cName);
+const getSceduledById = async (req, res) => {
+    const _id = req.params;
     try {
-        const Sceduled = await SceduledModel.find({SceduledName: cName});
-        if (Sceduled.length === 0){
-            //TODO - return status
-            return res.status(200).send('There are no Sceduleds matching this name.');
+        const sceduled = await SceduledModel.findById(_id);
+        if (!sceduled){
+            return res.status(404).send();
         }
-        res.status(201).send(Sceduled);
+        res.status(200).send(sceduled);
+    } catch(e) {
+        res.status(500).send(e+" nooooooooo!");
+    }
+}
+
+
+const getSceduledByName = async (req, res) => {
+    const cName = req.body.name;
+    try {
+        const sceduled = await SceduledModel.find({courseName: cName});
+        if (sceduled.length === 0){
+            return res.status(404).send('There are no Sceduleds matching this name.');
+        }
+        res.status(200).send(sceduled);
+    } catch(e) {
+        res.status(500).send(e+" nooooooooo!");
+    }
+}
+
+//TODO - return by date or by exact time? + how do i get the date?
+const getSceduledByDate = async (req, res) => {
+    const cName = req.body.date;
+    console.log(cDate);
+    try {
+        const sceduled = await SceduledModel.find({timeOfCourse: cName});
+        if (sceduled.length === 0){
+            return res.status(404).send('There are no sceduleds matching this time.');
+        }
+        res.status(200).send(sceduled);
     } catch(e) {
         res.status(500).send(e+" nooooooooo!");
     }
@@ -70,6 +96,8 @@ const getSceduledByName = async (req, res) => {
 module.exports = {
     addSceduled,
     getAllSceduleds,
+    getSceduledById,
     getSceduledByName,
+    getSceduledByDate,
     // editSceduled,
 }

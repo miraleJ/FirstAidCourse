@@ -6,9 +6,11 @@ sRouter.post('/', (req, res) => {
     sceduledController.addSceduled(req, res);
 }).get('/', (req, res) => {
     sceduledController.getAllSceduled(req, res);
-}).get('/:courseName', (req, res) => {
+}).get('/id/:id', (req, res) => {
+    sceduledController.getSceduledById(req, res);
+}).get('/name/:courseName', (req, res) => {
     sceduledController.getSceduledByCourseName(req, res);
-}).get('/:date', (req, res) => {
+}).get('/date', (req, res) => {
     sceduledController.getSceduledByDate(req, res);
 })
 //TODO - get course by part of the name

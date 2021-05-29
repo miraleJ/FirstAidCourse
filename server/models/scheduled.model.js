@@ -26,7 +26,7 @@ const sceduledSchema =  mongoose.Schema({
             publicArea: {
                 type: String,
                 require: true,
-                unique: true,
+                unique: false,
                 trim: true
             }
         },
@@ -34,29 +34,36 @@ const sceduledSchema =  mongoose.Schema({
         unique: false
     },
     timeOfCourse: {
-        type: {
-            date: {
-                type: String,
-                require: false,
-                unique: false,
-                trim: false,
-                validate(value) {
-                    // validator.toDate(value); //TODO
-                }
-            },
-            time: {
-                type: String,
-                require: false,
-                unique: false,
-                trim: true
-                //TODO
-            }
-        },
+        type: Date,
+        //  {
+        //     date: {
+        //         type: String,
+        //         require: false,
+        //         unique: false,
+        //         trim: false,
+        //         validate(value) {
+        //             // validator.toDate(value); //TODO
+        //         }
+        //     },
+        //     time: {
+        //         type: String,
+        //         require: false,
+        //         unique: false,
+        //         trim: true
+        //         //TODO
+        //     }
+        // },
         require: true,
         unique: true,
-        trim: true
+        default: Date.now(),
+        // trim: true
     },
-    moreDetailes: {
+    isOnline: {
+        type: Boolean,
+        require: true,
+        unique: false
+    },
+    moreDetails: {
         type: String,
         require: false,
         unique: false,
@@ -64,11 +71,11 @@ const sceduledSchema =  mongoose.Schema({
     }
 })
 
-sceduledSchema.virtual('students', {
-    ref: 'User',
-    localField: '_id',
-    foreignField: 'sceduledCourse'
-})
+// sceduledSchema.virtual('students', {
+//     ref: 'User',
+//     localField: '_id',
+//     foreignField: 'sceduledCourse'
+// })
 
 const sceduledModel = mongoose.model("SceduledCourse", sceduledSchema);
 module.exports = sceduledModel;

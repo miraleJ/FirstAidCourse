@@ -29,12 +29,11 @@ const getAllUsers = async (req, res) => {
     try {
         const users = await userModel.find();
         if (users.length === 0){
-            //TODO - return status
             return res.status(204).send('There are no users yet.');
         }
         res.status(200).send(users);
     } catch(e) {
-        res.status(404).send(e+" nooooooooo!");
+        res.status(500).send(e+" nooooooooo!");
     }
 }
 
@@ -44,15 +43,28 @@ const getUserByMail = async (req, res) => {
     //     res.status(500).send("The mail is not valid");
     // }
     try {
-        // tODO to lowercase
-        const user = await userModel.find({email: email});
-        if (user.length === 0){
-            //TODO - return status
-            return res.status(204).send('There are no users matching this mail.');
+        // TODO to lowercase
+        const user = await userModel.findOne({email: email});
+        if (!user){
+            return res.status(404).send('There are no users matching this mail.');
         }
         res.status(200).send(user);
     } catch(e) {
-        res.status(404).send(e+" nooooooooo!");
+        res.status(500).send(e+" nooooooooo!");
+    }
+}
+
+const getUserByName= async (req, res) => {
+    const name = req.params;
+    try {
+        // TODO to lowercase
+        const user = await userModel.find({name: name});
+        if (user.length === 0){
+            return res.status(404).send('There are no users matching this name.');
+        }
+        res.status(200).send(user);
+    } catch(e) {
+        res.status(500).send(e+" nooooooooo!");
     }
 }
 
@@ -74,5 +86,6 @@ module.exports = {
     addUser,
     getAllUsers,
     getUserByMail,
+    getUserByName,
     // editCourse,
 }
