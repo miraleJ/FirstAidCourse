@@ -1,7 +1,5 @@
-# express and react boilerplate!
+# First-Aid Course Shop
 
-## after cloning the project type in the console:
+Node.js, MongoDB, React, Css, HTML. Final project.
 
-### •npm install
-
-### •npm run client-install
+Link: https://first-aid-courses.herokuapp.com/

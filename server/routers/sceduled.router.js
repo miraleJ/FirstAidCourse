@@ -12,6 +12,8 @@ sRouter.post('/', (req, res) => {
     sceduledController.getSceduledByCourseName(req, res);
 }).get('/date', (req, res) => {
     sceduledController.getSceduledByDate(req, res);
+}).patch('/:id', (req, res) => {
+    sceduledController.updateSceduled(req, res);
 })
 //TODO - get course by part of the name
 // .put('/', (req, res) => { /TODO

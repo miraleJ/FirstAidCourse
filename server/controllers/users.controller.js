@@ -1,5 +1,6 @@
 const userModel = require('../models/user.model');
 var validator = require('validator');
+const { findByIdAndUpdate } = require('../models/user.model');
 
 const addUser = async (req, res) => {
     const { email, name, password, userType } = req.body;
@@ -55,7 +56,7 @@ const getUserByMail = async (req, res) => {
 }
 
 const getUserByName= async (req, res) => {
-    const name = req.params;
+    const name = req.params.name;
     try {
         // TODO to lowercase
         const user = await userModel.find({name: name});
@@ -68,24 +69,33 @@ const getUserByName= async (req, res) => {
     }
 }
 
-// const editCourse = async (req, res) => {
-//     const { courseName, length, price } = req.body;
+const updateUser = async (req, res) => {
+    try {
+        const user = await userModel.findByIdAndUpdate(req.params.id, req.body, { new : true, runValidators : true })
 
-//     if (false) {//TODO
-//         // validations - throw error if wrong
-//     }
-//     const course = new courseModel({
-//         courseName,
-//         length,
-//         price,
-//         isActive : true
-//     });
-// }
+        if (!user) {
+            return res.status(404).send()
+        }
+
+        res.send(user)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+}
+
+const deleteUser = async (req, res) => {
+    try {
+        const user = await userModel.findByIdAndDelete(req.params.id)
+    } catch (error) {
+        
+    }
+}
 
 module.exports = {
     addUser,
     getAllUsers,
     getUserByMail,
     getUserByName,
-    // editCourse,
+    updateUser,
+    deleteUser,
 }

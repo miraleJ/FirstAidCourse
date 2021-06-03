@@ -79,6 +79,21 @@ const getSceduledByDate = async (req, res) => {
     }
 }
 
+const updateSceduled = async (req, res) => {
+    try {
+        const sceduled = await SceduledModel.findByIdAndUpdate(req.params.id, req.body, { new : true, runValidators : true })
+
+        if (!sceduled) {
+            return res.status(404).send()
+        }
+
+        res.send(sceduled)
+    } catch (error) {
+        res.status(400).send(error)
+    }
+}
+
+
 // const editSceduled = async (req, res) => {
 //     const { SceduledName, length, price } = req.body;
 
@@ -99,5 +114,6 @@ module.exports = {
     getSceduledById,
     getSceduledByName,
     getSceduledByDate,
+    updateSceduled,
     // editSceduled,
 }
