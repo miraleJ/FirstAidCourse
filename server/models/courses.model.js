@@ -3,31 +3,31 @@ const mongoose = require('mongoose');
 const courseSchema =  mongoose.Schema({
     courseName: {
         type: String,
-        require: true,
+        required: true,
         unique: true,
         trim: true,
         maxLength: 80
     },
     length: {
         type: Number,
-        require: true,
+        required: true,
         unique: false,
     },
     price: {
         type: Number,
-        require: true,
+        required: true,
         unique: false
     },
     description: {
         type: String,
-        require: false,
+        required: false,
         unique: false,
         trim: true,
         // maxLength: 
     },
     isPublished: {
         type: Boolean,
-        require: true,
+        required: true,
         unique: false,
         default: true
     },

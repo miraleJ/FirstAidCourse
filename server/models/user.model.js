@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const validator = require('validator');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken')
 
 const userSchema = new mongoose.Schema({
     email: {
         type: String,
-        require: true,
+        required: true,
         unique: true,
         trim: true,
         validate(value) {
@@ -16,13 +17,13 @@ const userSchema = new mongoose.Schema({
     },
     name: {
         type: String,
-        require: true,
+        required: true,
         unique: true,
         trim: true
     },
     password: {
         type: String,
-        require: true,
+        required: true,
         unique: false,
         validate(value) {
             if (!validator.isStrongPassword(value)) {
@@ -34,7 +35,7 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum : ['interested','registered','admin'],
         default: 'interested',
-        require: false,
+        required: false,
         unique: false,
         trim: true,
     },
@@ -43,21 +44,37 @@ const userSchema = new mongoose.Schema({
             sceduledCourse: {
                 // type: String,
                 type: mongoose.Schema.Types.ObjectId,
-                require: false,
+                required: false,
                 unique: false,
                 // ref: 'SceduledCourse'
             },
             didPass: {
                 type: Boolean,
-                require: true,
+                required: true,
                 unique: false          
             }
         }],
         default: [],
-        require: true,
+        required: true,
         unique: false,
-    }
+    },
+    tokens: [{
+        token: {
+            type: String,
+            required: true
+        }
+    }]
 })
+
+userSchema.methods.generateAuthToken = async function () {
+    const user = this
+    const token = jwt.sign({ _id: user._id.toString() }, 'wedontneedmoreeducation')
+
+    user.tokens = user.tokens.concat({ token })
+    await user.save()
+
+    return token
+}
 
 userSchema.statics.findByCredentials = async (email, password) => {
     const user = await userModel.findOne({ email })

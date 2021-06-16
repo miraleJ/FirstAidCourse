@@ -4,14 +4,14 @@ const validator = require('validator');
 const sceduledSchema =  mongoose.Schema({
     courseName: { //TODO - need to be from the courses schema
         type: String,
-        require: true,
+        required: true,
         unique: false,
         trim: true
     },
     // course: {
     //     // TODO - how to do it can have
     //     // type: mongoose.Schema.Types.ObjectId,
-    //     require: true,
+    //     required: true,
     //     unique: false,
     //     ref: 'Course'
     // },
@@ -19,18 +19,18 @@ const sceduledSchema =  mongoose.Schema({
         type: {
             address: {
                 type: String,
-                require: true,
+                required: true,
                 unique: false,
                 trim: true
             },
             publicArea: {
                 type: String,
-                require: true,
+                required: true,
                 unique: false,
                 trim: true
             }
         },
-        require: true,
+        required: true,
         unique: false
     },
     timeOfCourse: {
@@ -38,7 +38,7 @@ const sceduledSchema =  mongoose.Schema({
         //  {
         //     date: {
         //         type: String,
-        //         require: false,
+        //         required: false,
         //         unique: false,
         //         trim: false,
         //         validate(value) {
@@ -47,25 +47,25 @@ const sceduledSchema =  mongoose.Schema({
         //     },
         //     time: {
         //         type: String,
-        //         require: false,
+        //         required: false,
         //         unique: false,
         //         trim: true
         //         //TODO
         //     }
         // },
-        require: true,
+        required: true,
         unique: true,
         default: Date.now(),
         // trim: true
     },
     isOnline: {
         type: Boolean,
-        require: true,
+        required: true,
         unique: false
     },
     moreDetails: {
         type: String,
-        require: false,
+        required: false,
         unique: false,
         trim: true
     }
