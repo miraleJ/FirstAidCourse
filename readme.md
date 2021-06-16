@@ -3,3 +3,9 @@
 Node.js, MongoDB, React, Css, HTML. Final project.
 
 Link: https://first-aid-courses.herokuapp.com/
+
+First-Aid Courses Site and Store Website - Final Project
+• Full-stack development of a website store of first-aid courses. The site includes a database of courses, users, and blog posts.
+• Developed with Node.JS, React, JavaScript, CSS, and HTML.
+Using MongoDB database, and Heroku deployment.
+Including authentication with npm libraries: bcrypt and jsonwebtoken - jwt.
