@@ -26,6 +26,16 @@ const addUser = async (req, res) => {
     }
 }
 
+const login = async (req, res) => {
+    try {
+        const user = await userModel.findByCredentials(req.body.email, req.body.password)
+
+        res.send(user)
+    } catch (error) {
+        res.status(400).send()
+    }
+}
+
 const getAllUsers = async (req, res) => {
     try {
         const users = await userModel.find();
@@ -70,8 +80,21 @@ const getUserByName= async (req, res) => {
 }
 
 const updateUser = async (req, res) => {
+    const updates = Object.keys(req.body)
+    const allowedUpdates = ['name', 'email', 'password', 'userType']
+    const isValidOperation = updates.every((update) => allowedUpdates.includes(update))
+
+    if (!isValidOperation) {
+        return res.status(400).send({ error: 'Invalid updates!' })
+    }
+
     try {
-        const user = await userModel.findByIdAndUpdate(req.params.id, req.body, { new : true, runValidators : true })
+        const user = await userModel.findById(req.params.id)
+
+        updates.forEach(update => user[update] = req.body[update])
+        await user.save()
+        
+        // const user = await userModel.findByIdAndUpdate(req.params.id, req.body, { new : true, runValidators : true })
 
         if (!user) {
             return res.status(404).send()
@@ -86,13 +109,20 @@ const updateUser = async (req, res) => {
 const deleteUser = async (req, res) => {
     try {
         const user = await userModel.findByIdAndDelete(req.params.id)
+
+        if (!user) {
+            return res.status(404).send()
+        }
+
+        res.send(user)
     } catch (error) {
-        
+        res.status(500).send()
     }
 }
 
 module.exports = {
     addUser,
+    login,
     getAllUsers,
     getUserByMail,
     getUserByName,

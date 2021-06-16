@@ -4,6 +4,8 @@ const usersController = require('../controllers/users.controller')
 
 uRouter.post('/', (req, res) => {
     usersController.addUser(req, res);
+}).post('/login', (req, res) => {
+    usersController.login(req, res);
 }).get('/', (req, res) => {
     usersController.getAllUsers(req, res);
 }).get('/email', (req, res) => {

@@ -80,8 +80,19 @@ const getSceduledByDate = async (req, res) => {
 }
 
 const updateSceduled = async (req, res) => {
+    const updates = Object.keys(req.body)
+    const allowedUpdates = ['courseName', 'place', 'timeOfCourse', 'moreDetails']
+    const isValidOperation = updates.every(update => allowedUpdates.includes(update))
+
+    if (!isValidOperation){
+        return res.status(400).send({ error: 'Invalid updates!'})
+    }
+
     try {
-        const sceduled = await SceduledModel.findByIdAndUpdate(req.params.id, req.body, { new : true, runValidators : true })
+        const sceduled = await SceduledModel.findById(req.params.id)
+
+        updates.forEach(update => sceduled[update] = req.body[update])
+        await sceduled.save()
 
         if (!sceduled) {
             return res.status(404).send()
@@ -90,6 +101,20 @@ const updateSceduled = async (req, res) => {
         res.send(sceduled)
     } catch (error) {
         res.status(400).send(error)
+    }
+}
+
+const deleteSceduled = async (req, res) => {
+    try {
+        const sced = await userModel.findByIdAndDelete(req.params.id)
+
+        if (!sced) {
+            return res.status(404).send()
+        }
+
+        res.send(user)
+    } catch (error) {
+        res.status(500).send()
     }
 }
 
@@ -115,5 +140,6 @@ module.exports = {
     getSceduledByName,
     getSceduledByDate,
     updateSceduled,
+    deleteSceduled,
     // editSceduled,
 }

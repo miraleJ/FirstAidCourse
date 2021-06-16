@@ -45,3 +45,18 @@ mongoose.connect(server, {
 app.listen(process.env.PORT || port , () =>{
     console.log(`Server started on port ${port}`)
 });
+
+const bcrypt = require('bcryptjs')
+
+const myFunction = async () => {
+  const password = 'qW123456!'
+  const hashedPassword = await bcrypt.hash(password, 8)
+
+  console.log(password);
+  console.log(hashedPassword);
+
+  const isMatch = await bcrypt.compare('qW123456!', hashedPassword)
+  console.log(isMatch);
+}
+
+myFunction()
