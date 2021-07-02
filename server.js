@@ -8,10 +8,13 @@ const coursesRouter = require('./server/routers/courses.router')
 const usersRouter = require('./server/routers/users.router')
 const sceduledRouter = require('./server/routers/sceduled.router')
 
-app.use((req, res, next) => {
-  console.log(req.method, req.path)
-  next()
-})
+// app.use((req, res, next) => {
+//   if (req.method === 'GET') {
+//     res.send('GET requests are disabled')
+//   } else {
+//     next()
+//   }
+// })
 
 app.use(cors());
 

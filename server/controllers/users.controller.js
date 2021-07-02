@@ -49,6 +49,10 @@ const getAllUsers = async (req, res) => {
     }
 }
 
+const getMe = async (req, res) => {
+    res.send(req.user)
+}
+
 const getUserByMail = async (req, res) => {
     const email = req.body.email;
     // if (!validator.isMail(email)) { //TODO
@@ -125,6 +129,7 @@ module.exports = {
     addUser,
     login,
     getAllUsers,
+    getMe,
     getUserByMail,
     getUserByName,
     updateUser,

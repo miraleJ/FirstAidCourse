@@ -1,13 +1,16 @@
 const express = require('express');
 const uRouter = express.Router();
 const usersController = require('../controllers/users.controller')
+const auth = require('../middleware/auth')
 
 uRouter.post('/', (req, res) => {
     usersController.addUser(req, res);
 }).post('/login', (req, res) => {
     usersController.login(req, res);
-}).get('/', (req, res) => {
+}).get('/', auth, (req, res) => {
     usersController.getAllUsers(req, res);
+}).get('/me', auth, (req, res) => {
+    usersController.getUserByMail(req, res);
 }).get('/email', (req, res) => {
     usersController.getUserByMail(req, res);
 }).get('/:name', (req, res) => {
