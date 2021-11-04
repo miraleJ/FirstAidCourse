@@ -55,16 +55,16 @@ function App() {
           txt5='ABOUT'
           loginT={loginToggle}
         />
-          <Switch>
-            <Route exact path='/' component={HomePage} />
-            <Route exact path='/courses'>{
-              spinner ?
-                <div className="loader">Loading...</div> :
-                <CoursesPage courses={allCourses} />
-            }</Route>
-            <Route exact path='/blog' component={BlogPage} />
-            <Route exact path='/exercises' component={ExercisesPage} />
-          </Switch>
+        <Switch>
+          <Route exact path='/' component={HomePage} />
+          <Route exact path='/courses'>{
+            spinner ?
+              <div className="loader">Loading...</div> :
+              <CoursesPage courses={allCourses} />
+          }</Route>
+          <Route exact path='/blog' component={BlogPage} />
+          <Route exact path='/exercises' component={ExercisesPage} />
+        </Switch>
         <Footer />
       </BrowserRouter>
     </div>
